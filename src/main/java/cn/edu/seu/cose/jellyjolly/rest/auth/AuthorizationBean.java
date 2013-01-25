@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package cn.edu.seu.cose.jellyjolly.rest.auth;
 
 /**
@@ -22,12 +21,12 @@ package cn.edu.seu.cose.jellyjolly.rest.auth;
  * @author rAy <predator.ray@gmail.com>
  */
 public class AuthorizationBean {
-    
+
     private String authorizedUsername;
-    
     private long authorizedTime;
-    
-    protected AuthorizationBean(String authorizedUsername, long authorizedTime) {
+
+    protected AuthorizationBean(String authorizedUsername,
+            long authorizedTime) {
         this.authorizedUsername = authorizedUsername;
         this.authorizedTime = authorizedTime;
     }
@@ -39,5 +38,4 @@ public class AuthorizationBean {
     public long getAuthorizedTime() {
         return authorizedTime;
     }
-
 }

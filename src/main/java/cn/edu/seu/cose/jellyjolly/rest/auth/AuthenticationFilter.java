@@ -48,10 +48,10 @@ public abstract class AuthenticationFilter implements Filter {
     private static final String HTTP_METHOD_GET = "GET";
 
     private static final String HTTP_BASIC_AUTH = "Basic";
-    
+
     private static final Logger logger = Logger.getLogger(
             AuthenticationFilter.class.getName());
-    
+
     private static String getAuthenticationType(String authorization)
                     throws IOException {
             return authorization.split(" +")[0];
@@ -76,12 +76,13 @@ public abstract class AuthenticationFilter implements Filter {
 
     protected abstract boolean authenticate(String username, String password)
                     throws Exception;
-    
+
     protected abstract void doAfterAuthorized(HttpServletRequest request,
             HttpServletResponse response, AuthorizationBean authorizationBean)
             throws IOException, ServletException;
-    
-    protected abstract boolean expired(AuthorizationBean authBean) throws Exception;
+
+    protected abstract boolean expired(AuthorizationBean authBean)
+            throws Exception;
 
     @Override
     public void init(FilterConfig fConfig) throws ServletException {}
@@ -171,7 +172,7 @@ public abstract class AuthenticationFilter implements Filter {
             long current = System.currentTimeMillis();
             AuthorizationBean newAuthBean = new AuthorizationBean(username, current);
             session.setAttribute(AUTH_BEAN_ATTRI, newAuthBean);
-            
+
             doAfterAuthorized(request, response, newAuthBean);
             chain.doFilter(request, response);
     }

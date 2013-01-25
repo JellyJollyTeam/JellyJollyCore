@@ -14,11 +14,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package cn.edu.seu.cose.jellyjolly.rest.auth;
 
 import cn.edu.seu.cose.jellyjolly.dao.AdminUserDataAccess;
-import cn.edu.seu.cose.jellyjolly.dao.DataAccessFactory;
 import java.io.IOException;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletContext;
@@ -33,7 +31,6 @@ import javax.servlet.http.HttpServletResponse;
 public class ResourceAuthenticationFilter extends AuthenticationFilter {
 
     private static final long THIRTY_MINS_IN_MILLIS = 1000 * 60 * 60 * 30;
-
     private AdminUserDataAccess adminUserDataAccess;
 
     @Override
@@ -62,5 +59,4 @@ public class ResourceAuthenticationFilter extends AuthenticationFilter {
         long expireTime = authBean.getAuthorizedTime() + THIRTY_MINS_IN_MILLIS;
         return expireTime > currentTimeMillis;
     }
-
 }
